@@ -5,7 +5,7 @@ const setWithingsData = require('./setWithingsData');
 
 function setData() {
   return Promise.all([
-    setFormData(),
+    // setFormData(),
     setFitbitData(),
     setMyFitnessPalData(),
     setWithingsData(),
