@@ -1212,6 +1212,10 @@ dot-prop@^4.1.0, dot-prop@^4.2.0:
   dependencies:
     is-obj "^1.0.0"
 
+dotenv@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.0.tgz#0206eb5b336639bf377618a2a304ff00c6a1fddb"
+
 duplexer2@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
@@ -2908,6 +2912,10 @@ nested-error-stacks@^1.0.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz#19f619591519f096769a5ba9a86e6eeec823c3cf"
   dependencies:
     inherits "~2.0.1"
+
+node-fetch@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.0.0.tgz#982bba43ecd4f2922a29cc186a6bbb0bb73fcba6"
 
 node-forge@0.7.1, node-forge@^0.7.1:
   version "0.7.1"
