@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 require('dotenv').config();
 const setData = require('./src/setData');
-const auth = require('./auth');
+const auth = require('./src/auth');
 
 exports.setData = functions.https.onRequest((request, response) => {
   setData()
