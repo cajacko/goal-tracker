@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const formatDaily = require('./helpers/formatDaily');
+const database = require('./database');
 
 function getFormData(id) {
   const date = new Date();
@@ -19,7 +20,26 @@ function getFormData(id) {
 function saveFormData(callback) {
   return response =>
     callback(response).then(data => {
-      return data;
+      const promises = [];
+
+      Object.keys(data).forEach(day => {
+        const ref = `days/${day}`;
+
+        const promise = database()
+          .ref(ref)
+          .once('value')
+          .then(snapshot => Object.assign(snapshot.val() || {}, data[day]))
+          .then(finalDay =>
+            database()
+              .ref(ref)
+              .set(finalDay)
+              .then(() => [day, finalDay])
+          );
+
+        promises.push(promise);
+      });
+
+      return Promise.all(promises);
     });
 }
 

@@ -1,25 +1,11 @@
 const fetch = require('node-fetch');
 const queryString = require('query-string');
-const firebase = require('firebase');
-
-var config = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
-  // storageBucket: "<BUCKET>.appspot.com",
-};
-
-console.log(new Date());
-
-firebase.initializeApp(config);
-
-var database = firebase.database();
+const database = require('./database');
 
 function saveTokens({ access_token, refresh_token, expires_in }) {
   console.log(config);
 
-  return firebase
-    .database()
+  return database()
     .ref('auth/fitbit')
     .set({
       accessToken: access_token,
