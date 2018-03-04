@@ -34,6 +34,7 @@ function temp(endDate, currentDay, format) {
 function formatDaysData(days) {
   const data = { labels: [], datasets: [] };
   const datasets = {};
+  const minMax = {};
   const orderedDays = Object.keys(days).sort();
 
   const startDate = moment(orderedDays[0]);
@@ -57,6 +58,11 @@ function formatDaysData(days) {
         };
 
         datasets[key].data[count] = day[key];
+
+        minMax[key] = minMax[key] || { min: day[key], max: day[key] };
+
+        if (minMax[key].min > day[key]) minMax[key].min = day[key];
+        if (minMax[key].max < day[key]) minMax[key].max = day[key];
       });
     }
 
@@ -68,6 +74,19 @@ function formatDaysData(days) {
 
   Object.keys(datasets).forEach(key => {
     data.datasets.push(datasets[key]);
+  });
+
+  data.datasets.forEach((dataset, i) => {
+    data.datasets[i].data = dataset.data.map(value => {
+      if (!value) return value;
+
+      const { label } = dataset;
+
+      let newValue = value - minMax[label].min;
+      let range = minMax[label].max - minMax[label].min;
+
+      return newValue / range;
+    });
   });
 
   return data;
