@@ -8,7 +8,7 @@
   "scripts": {
     "login": "firebase login",
     "init": "firebase init functions",
-    "deploy": "yarn run build && firebase deploy --only functions",
+    "deploy": "yarn run build && firebase deploy",
     "start": "npm-run-all -p watch:css start:js",
     "start:js": "react-scripts start",
     "build:js": "react-scripts build",
