@@ -85,7 +85,7 @@ function formatDaysData(days) {
       let newValue = value - minMax[label].min;
       let range = minMax[label].max - minMax[label].min;
 
-      return newValue / range;
+      return newValue / range * 100;
     });
   });
 
