@@ -38,14 +38,13 @@ function formatDaysData(days) {
   const orderedDays = Object.keys(days).sort();
 
   const startDate = moment(orderedDays[0]);
-  let currentDay = startDate.clone();
   const endDate = moment();
   let count = 0;
 
-  while (
-    temp(endDate, currentDay, "YYYY") &&
-    temp(endDate, currentDay, "D") &&
-    temp(endDate, currentDay, "M")
+  for (
+    let currentDay = moment(startDate);
+    currentDay.diff(endDate, "days") <= 0;
+    currentDay.add(1, "days")
   ) {
     const dayString = currentDay.format("YYYY-MM-DD");
     const day = days[dayString];
